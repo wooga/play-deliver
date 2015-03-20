@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+"""playdeliver
+
+Usage:
+    playdeliver [options] upload <package-name> <output_dir>
+    playdeliver [options] init <package-name> <output_dir>
+    playdeliver (-h | --help)
+    playdeliver --version
+
+Options:
+  -h --help                 Show this screen.
+  --version                 Show version.
+  --service-email=<e>       Account service email
+  --key=<k>                 Path to *.p12 keyfile
+"""
+
+from docopt import docopt
+from playdeliver import playdeliver
+import playdeliver as deliver
+
+if __name__ == '__main__':
+    arguments = docopt(__doc__, version=deliver.__version__)
+    playdeliver.execute(arguments)
