@@ -1,9 +1,5 @@
 """Module with Client class to access google api."""
 
-from apiclient.discovery import build
-import httplib2
-from oauth2client import client
-
 
 class Client(object):
 
@@ -13,20 +9,19 @@ class Client(object):
     It hold the service user credentials and app package name.
     """
 
-    def __init__(self, package_name, email, key):
+    def __init__(self, package_name, service):
         """
         create new client object.
 
         package_name = the app package you want to access
+        credentials_file = path to credentials json
         email = the service user email
         key = the service user key
         """
         super(Client, self).__init__()
         self.package_name = package_name
-        self.email = email
-        self.key = key
+        self.service = service
         self.edit_id = None
-        self._init_credentials()
 
     def list(self, service_name, **params):
         """
@@ -115,19 +110,3 @@ class Client(object):
                 body={}, packageName=self.package_name)
             result = edit_request.execute()
             self.edit_id = result['id']
-
-    def _init_credentials(self):
-        # Create an httplib2.Http object to handle our HTTP requests and
-        # authorize it with the Credentials. Note that the first parameter,
-        # service_account_name, is the Email address created for the Service
-        # account. It must be the email address associated with
-        # the key that was created.
-        credentials = client.SignedJwtAssertionCredentials(
-            self.email,
-            self.key,
-            scope='https://www.googleapis.com/auth/androidpublisher')
-
-        http = httplib2.Http()
-        http = credentials.authorize(http)
-
-        self.service = build('androidpublisher', 'v2', http=http)

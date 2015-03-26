@@ -27,9 +27,7 @@ def execute(options):
     """execute the tool with given options."""
     # Load the key in PKCS 12 format that you downloaded from the Google APIs
     # Console when you created your Service account.
-    email = _fetch_service_mail(options['--service-email'])
-    key = _load_key(options['--key'])
-    package_name = options['<package-name>']
+    package_name = options['<package>']
     source_directory = options['<output_dir>']
 
     if options['upload'] is True:
@@ -42,5 +40,11 @@ def execute(options):
             "Warning! Downloaded images are only previews!"
             "They may be to small for upload.")
 
-    command = SyncCommand(package_name, email, key, source_directory, upstream)
+    if options['--credentials'] is None:
+        email = _fetch_service_mail(options['--service-email'])
+        key = _load_key(options['--key'])
+        command = SyncCommand(package_name, source_directory, upstream, email=email, key=key)
+    else:
+        credentials = options['--credentials']
+        command = SyncCommand(package_name, source_directory, upstream, credentials_file=credentials)
     command.execute()

@@ -10,12 +10,9 @@ usage
 -----
 
 ::
-
-    """playdeliver
-
     Usage:
-        playdeliver [options] upload <package-name> <output_dir>
-        playdeliver [options] init <package-name> <output_dir>
+        playdeliver (--service-email=<e> --key=<k> | --credentials=<c>) upload <package> <output_dir>
+        playdeliver (--service-email=<e> --key=<k> | --credentials=<c>) init <package> <output_dir>
         playdeliver (-h | --help)
         playdeliver --version
 
@@ -24,7 +21,7 @@ usage
       --version                 Show version.
       --service-email=<e>       Account service email
       --key=<k>                 Path to *.p12 keyfile
-    """
+      --credentials=<c>         Path to credentials json file
 
 requirements
 ------------
