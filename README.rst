@@ -1,10 +1,26 @@
 play-deliver
 ============
+.. image:: https://pypip.in/version/playdeliver/badge.svg?text=version
+    :target: https://pypi.python.org/pypi/playdeliver/
+    :alt: Latest Version
+
+.. image:: https://pypip.in/license/playdeliver/badge.svg
+    :target: https://pypi.python.org/pypi/playdeliver/
+    :alt: License
+
+.. image:: https://pypip.in/py_versions/playdeliver/badge.svg
+    :target: https://pypi.python.org/pypi/playdeliver/
+    :alt: Supported Python versions
+
+.. image:: https://pypip.in/status/playdeliver/badge.svg
+    :target: https://pypi.python.org/pypi/playdeliver/
+    :alt: Development Status
+
 
 Upload screenshots, metadata of your app to the Play Store using a
 single command
 
-deliver can upload app screenshots google play backend.
+deliver can upload app screenshots to google play backend.
 
 usage
 -----
