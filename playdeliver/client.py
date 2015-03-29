@@ -90,7 +90,7 @@ class Client(object):
 
     def build_params(self, params={}):
         """
-        build a params dictionary with current editId and packageName. 
+        build a params dictionary with current editId and packageName.
 
         use optional params parameter
         to merge additional params into resulting dictionary.
