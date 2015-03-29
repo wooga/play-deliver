@@ -40,7 +40,7 @@ class TestClientMethods(unittest.TestCase):
     def test_build_params_with_custom_params(self):
         """Test of build params retrurns correct dict."""
         self.client.ensure_edit_id()
-        
+
         returned_params = self.client.build_params({'foo': 'bar'})
         self.assertEqual(
             returned_params, {'editId': '1',
@@ -49,7 +49,6 @@ class TestClientMethods(unittest.TestCase):
 
     def test_ensure_edit_id(self):
         """Test if edit_id is created once when not set."""
-
         self.assertEqual(self.client.edit_id, None)
 
         self.client.ensure_edit_id()
@@ -64,6 +63,19 @@ class TestClientMethods(unittest.TestCase):
         self.client.ensure_edit_id()
 
         self.assertEqual(self.client.edit_id, '2')
+
+    def test_commit(self):
+        """Test if commit method executes commit."""
+        self.client.ensure_edit_id()
+
+        commit_mock = Mock()
+        self.edits_mock.commit.return_value = commit_mock
+        commit_mock.execute.return_value = {'id': '1'}
+        
+        self.client.commit()
+        commit_mock.executes.assertCalled()
+        self.assertEqual(self.client.edit_id, None)
+
 
 if __name__ == '__main__':
     unittest.main()
