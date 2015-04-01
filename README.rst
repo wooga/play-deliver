@@ -56,10 +56,10 @@ google login
 ------------
 
 Google login credentials can be passed in different ways. If the credentials
-json file is not passed via `--credentials, --service-email and --service-key`, 
+json file is not passed via ``--credentials, --service-email and --service-key``, 
 playdeliver will try to find the filepath either in a environment variable 
-called `PLAY_DELIVER_CREDENTIALS` or in the user folder: 
-`~/.playdeliver/credentials.json`.
+called ``PLAY_DELIVER_CREDENTIALS`` or in the user folder: 
+``~/.playdeliver/credentials.json``.
 
 requirements
 ------------
