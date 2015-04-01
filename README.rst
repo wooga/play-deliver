@@ -28,8 +28,8 @@ usage
 .. code::
     Usage:
 
-    playdeliver (--service-email=<e> --key=<k> | --credentials=<c>) upload <package> <output_dir>
-    playdeliver (--service-email=<e> --key=<k> | --credentials=<c>) init <package> <output_dir>
+    playdeliver [options] upload <package> <output_dir>
+    playdeliver [options] init <package> <output_dir>
     playdeliver (-h | --help)
     playdeliver --version
 
