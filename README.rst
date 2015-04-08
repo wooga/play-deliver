@@ -42,7 +42,7 @@ usage
     Show version.
 
     --service-email=<e>
-    Account service email. Use this option together with `--key` to pass a 
+    Account service email. Use this option together with `--key` to pass a
     corresponding keyfile for user.
 
     --key=<k>
@@ -51,6 +51,15 @@ usage
     --credentials=<c>
     Path to credentials json file. This file is a alternative solution to log
     into play. Download the file from play service administration page.
+
+    -i --images
+    Upload/download images default is all
+
+    -l --listings
+    Upload/download listing
+
+    -p --inapp
+    Upload/download inapp products
 
 google login
 ------------
