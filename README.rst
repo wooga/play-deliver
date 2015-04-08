@@ -25,7 +25,8 @@ deliver can upload app screenshots to google play backend.
 usage
 -----
 
-.. code::
+::
+
     Usage:
 
     playdeliver [options] upload <package> <output_dir>
@@ -68,7 +69,7 @@ Google login credentials can be passed in different ways. If the credentials
 json file is not passed via ``--credentials, --service-email and --service-key``, 
 playdeliver will try to find the filepath either in a environment variable 
 called ``PLAY_DELIVER_CREDENTIALS`` or in the user folder: 
-``~/.playdeliver/credentials.json``.
+``home/.playdeliver/credentials.json``.
 
 requirements
 ------------
