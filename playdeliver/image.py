@@ -59,7 +59,7 @@ def delete_and_upload_images(client, image_type, language, base_dir):
     for deleted_files in deleted:
         print('  delete image: {0}'.format(deleted_files['id']))
 
-    for image_file in files_in_dir:
+    for image_file in files_in_dir[:8]:
         image_file_path = os.path.join(base_dir, language, image_file)
         image_response = client.upload(
             'images',
@@ -72,6 +72,9 @@ def delete_and_upload_images(client, image_type, language, base_dir):
 def download(client, target_dir):
     """Download images from play store into folder herachy."""
     print('download image previews')
+    print(
+        "Warning! Downloaded images are only previews!"
+        "They may be to small for upload.")
     tree = {}
     listings = client.list('listings')
     languages = map(lambda listing: listing['language'], listings)

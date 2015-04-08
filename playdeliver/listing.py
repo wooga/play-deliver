@@ -11,7 +11,6 @@ def upload(client, source_dir):
     print('upload store listings')
     print('---------------------')
     listings_folder = os.path.join(source_dir, 'listings')
-    paths = list_dir_abspath(listings_folder)
     langfolders = filter(os.path.isdir, list_dir_abspath(listings_folder))
 
     for language_dir in langfolders:
@@ -27,7 +26,9 @@ def upload(client, source_dir):
 
 def download(client, target_dir):
     """Download listing files from play and saves them into folder herachy."""
+    print('')
     print('download store listings')
+    print('---------------------')
     listings = client.list('listings')
     for listing in listings:
         path = os.path.join(target_dir, 'listings', listing['language'])

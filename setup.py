@@ -25,9 +25,9 @@ long_description = _read('README.rst', 'CHANGES.rst')
 
 setup(
     name='playdeliver',
-    version='1.0.0',
+    version='1.1.0',
     url='https://github.com/wooga/play-deliver',
-    download_url='https://github.com/wooga/play-deliver/archive/1.0.0.tar.gz',
+    download_url='https://github.com/wooga/play-deliver/archive/1.1.0.tar.gz',
     license='MIT LICENSE',
     author='Manfred Endres',
     install_requires=['docopt==0.6.1',
