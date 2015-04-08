@@ -29,17 +29,16 @@ def execute(options):
     else:
         upstream = False
 
-    if upstream is False:
-        print(
-            "Warning! Downloaded images are only previews!"
-            "They may be to small for upload.")
+    sub_tasks = {'images': options['--images'], 'listings': options['--listings'], 'inapp': options['--inapp']}
+    if sub_tasks == {'images': False, 'listings': False, 'inapp': False}:
+        sub_tasks = {'images': True, 'listings': True, 'inapp': True}
 
     credentials = create_credentials(credentials_file=options['--credentials'],
                                      service_email=options['--service-email'],
                                      service_key=options['--key'])
 
     command = SyncCommand(
-        package_name, source_directory, upstream, credentials)
+        package_name, source_directory, upstream, credentials, **sub_tasks)
     command.execute()
 
 
@@ -55,6 +54,7 @@ def create_credentials(credentials_file=None,
     """
     credentials = None
     if service_email is None and service_key is None:
+        print(credentials_file)
         if credentials_file is None:
             # try load file from env
             key = 'PLAY_DELIVER_CREDENTIALS'
@@ -71,6 +71,8 @@ def create_credentials(credentials_file=None,
             credentials = client.GoogleCredentials.from_stream(
                 credentials_file)
             credentials = credentials.create_scoped(scope)
+        else:
+            sys.exit("no credentials")
     else:
         credentials = client.SignedJwtAssertionCredentials(
             service_email, _load_key(service_key), scope=scope)

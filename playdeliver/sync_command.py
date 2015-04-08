@@ -1,10 +1,11 @@
 """Module for SyncCommand class."""
 from client import Client
 from apiclient.discovery import build
+from oauth2client import client
 import httplib2
 import listing
 import image
-
+import inapp_product
 
 class SyncCommand(object):
 
@@ -43,12 +44,21 @@ class SyncCommand(object):
         """Execute the command."""
         try:
             if self.upstream:
-                listing.upload(self.client, self.source_directory)
-                image.upload(self.client, self.source_directory)
-                self.client.commit()
+                if self.options['listings'] is True:
+                    listing.upload(self.client, self.source_directory)
+                    self.client.commit()
+                if self.options['images'] is True:
+                    image.upload(self.client, self.source_directory)
+                    self.client.commit()
+                if self.options['inapp'] is True:
+                    inapp_product.upload(self.client, self.source_directory)
             else:
-                listing.download(self.client, self.source_directory)
-                image.download(self.client, self.source_directory)
+                if self.options['listings'] is True:
+                    listing.download(self.client, self.source_directory)
+                if self.options['images'] is True:
+                    image.download(self.client, self.source_directory)
+                if self.options['inapp'] is True:
+                    inapp_product.download(self.client, self.source_directory)
 
         except client.AccessTokenRefreshError:
             print(

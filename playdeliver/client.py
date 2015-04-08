@@ -2,7 +2,6 @@
 
 
 class Client(object):
-
     """
     Client object which handles google api edits.
 
@@ -36,6 +35,23 @@ class Client(object):
         if result is not None:
             return result.get(service_name, list())
         return list()
+
+    def list_inappproducts(self):
+        """temp function to list inapp products."""
+
+        result = self.service.inappproducts().list(
+            packageName=self.package_name).execute()
+        if result is not None:
+            return result.get('inappproduct', list())
+        return list()
+
+    def insert_inappproduct(self, product):
+        return self.service.inappproducts().insert(
+            packageName=self.package_name, body=product).execute()
+
+    def update_inappproduct(self, product, sku):
+        return self.service.inappproducts().update(
+            packageName=self.package_name, sku=sku, body=product).execute()
 
     def update(self, service_name, **params):
         """
