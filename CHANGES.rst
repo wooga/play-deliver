@@ -1,3 +1,5 @@
+1.1.1 (2015/04/09) Fix package content
+
 1.1.0 (2015/04/08) Minor Adjustments
 ::
 
